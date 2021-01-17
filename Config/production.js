@@ -10,6 +10,7 @@ mysqlConnection = mysql.createConnection({
 
 mysqlConnection.connect((err) => {
     if(err) {
+        console.log(err)
         console.log("connection failed")
     }else{
         console.log("!!!Database connected")
