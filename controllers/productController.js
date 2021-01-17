@@ -18,6 +18,17 @@ exports.addProduct = (req, res) => {
     })
 }
 
+exports.deleteProduct = (req, res) => {
+    let product = new Product({id: req.params.id});
+    product.deleteProduct()
+    .then(data => {
+        res.status(200).json({status: 'success', message: "Product has been deleted"})
+    }) 
+    .catch(err => {
+        res.json({status: "error", message: err})
+    })
+}
+
 exports.getVarietyByProductId = (req, res) => {
     let product = new Product({id: req.params.product_id});
     product.getVarietyByProductId()

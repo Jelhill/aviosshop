@@ -47,6 +47,21 @@ Product.prototype.addProduct = function() {
     })
 }
 
+
+Product.prototype.deleteProduct = function() {
+    return new Promise((resolve, reject) => {
+        const { id } = this.data
+        let query = `DELETE FROM products WHERE id = ${id}`
+        mysqlConnection.query(query, (err, data) => {
+            if(err) {
+                this.errors.push(err)
+                return reject(this.errors)
+            }
+            resolve(data)
+        })
+    })
+}
+
 Product.prototype.addVarietyData = function() {
     return new Promise((resolve, reject) => {
         const { product_id, size, color, quantity} = this.data
