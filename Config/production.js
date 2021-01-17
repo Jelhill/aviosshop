@@ -4,7 +4,7 @@ mysqlConnection = mysql.createConnection({
     host: process.ENV.HOST,
     user: process.env.ROOT, 
     password: process.env.PASSWORD,
-    database: process.env.DATABASE,
+    database: process.env.DB,
     multipleStatements: true
 })
 
