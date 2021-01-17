@@ -20,6 +20,19 @@ Product.prototype.getProducts = function() {
 }
 
 
+Product.prototype.getVarietyByProductId = function() {
+    return new Promise((resolve, reject) => {
+        mysqlConnection.query(`SELECT * FROM varieties WHERE product_id = ${this.data.id}`, (err, data) => {
+            if(err) {
+                this.errors.push(err)
+                return reject(this.errors)
+            }
+            resolve(data)
+        })
+    })
+}
+
+
 Product.prototype.addProduct = function() {
     return new Promise((resolve, reject) => {
         const { product_name, product_description, display_image } = this.data

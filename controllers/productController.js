@@ -18,6 +18,18 @@ exports.addProduct = (req, res) => {
     })
 }
 
+exports.getVarietyByProductId = (req, res) => {
+    let product = new Product({id: req.params.product_id});
+    product.getVarietyByProductId()
+    .then(data => {
+        console.log(data)
+        res.status(200).json({status: 'success', data})
+    }) 
+    .catch(err => {
+        res.json({status: "error", message: err})
+    })
+}
+
 exports.addVariety = (req, res) => {
     let product = new Product(req.body);
     console.log(req.body)
