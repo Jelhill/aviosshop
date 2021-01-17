@@ -3,11 +3,10 @@ require("dotenv").config()
 
 mysqlConnection = mysql.createConnection({
     host: process.env.HOST,
-    username: process.env.USER, 
+    user: process.env.USER, 
     password: process.env.PASSWORD,
+    port: 3306,
     database: process.env.DB,
-    multipleStatements: true,
-    port: process.env.PORT
 })
 
 mysqlConnection.connect((err) => {
