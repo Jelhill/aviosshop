@@ -10,7 +10,7 @@ mysqlConnection = mysql.createConnection({
 })
 
 mysqlConnection.connect((err) => {
-    console.log("Pore", process.env.PORT)
+    console.log("Port", process.env.PORT, process.env.HOST, process.env.USER, process.env.PASSWORD)
     if(err) {
         console.log(err)
         console.log("connection failed")
