@@ -5,10 +5,12 @@ mysqlConnection = mysql.createConnection({
     user: process.env.ROOT, 
     password: process.env.PASSWORD,
     database: process.env.DB,
-    multipleStatements: true
+    multipleStatements: true,
+    port: process.env.PORT
 })
 
 mysqlConnection.connect((err) => {
+    console.log("Pore", process.env.PORT)
     if(err) {
         console.log(err)
         console.log("connection failed")
