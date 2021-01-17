@@ -1,9 +1,10 @@
 const mysql = require("mysql")
+require("dotenv").config
 
 mysqlConnection = mysql.createConnection({
     host: process.env.HOST,
     user: process.env.USER, 
-    password: "",
+    password: process.env.PASSWORD,
     database: process.env.DB,
     multipleStatements: true,
     port: process.env.PORT
@@ -15,6 +16,7 @@ mysqlConnection.connect((err) => {
         console.log(err)
         console.log("connection failed")
     }else{
+        console.log(process.env.PORT)
         console.log("!!!Database connected")
         const app = require("../server")
         const PORT = process.env.PORT || 4000

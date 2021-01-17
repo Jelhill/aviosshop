@@ -1,32 +1,21 @@
-// const mongoose = require("mongoose")
-// require("dotenv").config()
-
-// mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, client){
-//     if(err) {
-//         console.log("cannot connect to Database")
-//         console.log(err)
-//         process.exit(1)
-//     }else{
-//         console.log(`::Database Connected on !!!Dev DB`)
-//         module.exports = client
-//         const app = require("../server")
-//         const PORT = process.env.PORT || 5000
-//         app.listen(PORT, () => console.log(`::Server running on port ${PORT}`))
-//     }
-// })
-
+require("dotenv").config()
 const mysql = require("mysql")
+
 mysqlConnection = mysql.createConnection({
-    host: "localhost",
-    user: "root", 
-    password: "Fcbarcelona10",
-    database: "Avios",
-    multipleStatements: true
+    host: process.env.HOST,
+    user: process.env.USER, 
+    password: process.env.PASSWORD,
+    database: process.env.DB,
+    multipleStatements: true,
+    port: process.env.PORT
 })
 
 mysqlConnection.connect((err) => {
+    console.log("Ports", process.env.PORT, process.env.USER, process.env.PASSWORD, process.env.HOST, process.env.DB)
     console.log("connecting....")
+
     if(err) {
+        console.log(err)
         console.log("connection failed")
     }else{
         console.log("!!!Database connected")
