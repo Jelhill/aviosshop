@@ -7,7 +7,7 @@ router.get("/", (req, res) => res.json({status: "success", message: "App is work
 router.get("/products", productController.getProducts)
 router.get("/productVariety/:product_id", productController.getVarietyByProductId)
 router.post("/addProduct", productController.addProduct)
-router.post("/deleteProduct/:id", productController.deleteProduct)
+router.delete("/deleteProduct/:id", productController.deleteProduct)
 router.post("/addVariety", productController.addVariety)
 
 
