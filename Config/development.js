@@ -1,19 +1,16 @@
-require("dotenv").config()
 const mysql = require("mysql")
+require("dotenv").config()
 
-mysqlConnection = mysql.createConnection({
+const mysqlConnection = mysql.createPool({
     host: process.env.HOST,
     user: process.env.USER, 
     password: process.env.PASSWORD,
+    ssl: false,
     database: process.env.DB,
-    multipleStatements: true,
-    port: process.env.PORT
 })
 
-mysqlConnection.connect((err) => {
-    console.log("Ports", process.env.PORT, process.env.USER, process.env.PASSWORD, process.env.HOST, process.env.DB)
-    console.log("connecting....")
 
+mysqlConnection.getConnection((err, conn) => {
     if(err) {
         console.log(err)
         console.log("connection failed")
@@ -23,6 +20,7 @@ mysqlConnection.connect((err) => {
         const PORT = process.env.PORT || 4000
         app.listen(PORT, () => console.log(`::Server running on port ${PORT}`))
     }
-})
+});
+
 
 module.exports = mysqlConnection

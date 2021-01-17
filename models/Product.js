@@ -22,8 +22,8 @@ Product.prototype.getProducts = function() {
 
 Product.prototype.addProduct = function() {
     return new Promise((resolve, reject) => {
-        const { product_name, product_description } = this.data
-        let query = `INSERT INTO products (product_name, product_description, date_uploaded, date_edited) VALUES ('${product_name}', '${product_description}', '${this.now}', '${this.now}');`
+        const { product_name, product_description, display_image } = this.data
+        let query = `INSERT INTO products (product_name, product_description, date_uploaded, date_edited, display_image) VALUES ('${product_name}', '${product_description}', '${this.now}', '${this.now}', '${display_image}');`
         mysqlConnection.query(query, (err, data) => {
             if(err) {
                 this.errors.push(err)
