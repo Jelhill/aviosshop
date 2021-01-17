@@ -67,7 +67,7 @@ Product.prototype.addVarietyData = function() {
         const { product_id, size, color, quantity} = this.data
         let query = `INSERT INTO varieties (product_id, size, color, quantity, date_uploaded, date_edited) 
             VALUES ('${product_id}', '${size}', '${color}', '${quantity}', '${this.now}', '${this.now}');
-            SELECT * FROM varieties where id = LAST_INSERT_ID();`
+            SELECT LAST_INSERT_ID();`
         mysqlConnection.query(query, (err, data) => {
             if(err) {
                 console.log("Add V Data", err)
