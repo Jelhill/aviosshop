@@ -70,6 +70,7 @@ Product.prototype.addVarietyData = function() {
             SELECT * FROM varieties where id = LAST_INSERT_ID();`
         mysqlConnection.query(query, (err, data) => {
             if(err) {
+                console.log("Add V Data", err)
                 this.errors.push(err)
                 return reject(this.errors)
             }
@@ -87,6 +88,7 @@ Product.prototype.addVarietyImage = function(variety_id) {
         let query = `INSERT INTO images (variety_id, product_id, image, date_uploaded, date_edited) VALUES ${mapImage};`
         mysqlConnection.query(query, (err, data) => {
             if(err) {
+                console.log("Add V Image", err)
                 this.errors.push(err)
                 return reject(this.errors)
             }
